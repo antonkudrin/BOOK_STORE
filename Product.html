@@ -2,13 +2,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 	<head>
-		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <!--Метки для поисковиков-->
-    <meta name="keywords" content="Книга, Фантастика">          <!--Метка-->
-    <meta name="discription" content="Заяц с Янтарными глазами"><!--Описание для поисковиков-->
-		<!-- Bootstrap CSS -->
+		<meta name="keywords" content="Книга, Фантастика">          <!--Метка-->
+		<meta name="discription" content="Заяц с Янтарными глазами"><!--Описание для поисковиков-->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="style.css">
 		<link rel="shortcut icon" href="img/favicon.png" type="image/png">
@@ -17,163 +14,146 @@
 	</head>
 	<body>
     <div class="wrapper p-0">
-
-			  <!--      Навигатор Статичный!
-			  ------------------------------------------>
-			<div class="container-fluid py-0 fixed-top bg-dark">
-				<div class="container">
-				  <ul class="list-unstyled float-right mb-1 navbar-1">
-					<li class="list-inline-item"><a class="nav-link active py-0 px-3" href="index.html">Домашняя</a></li>
-					<!-- Button trigger modal -->
-					<li class="list-inline-item">
-					   <a type="button" data-toggle="modal" data-target="#exampleModal"
-					   class="py-0 px-2 btn">Войти</a>
-					</li>
-					<li class="list-inline-item"><a class="nav-link py-0 px-2" href="#">Аккаунт</a></li>
-					<li class="list-inline-item"><a class="nav-link py-0 px-2" href="#">Статус заказа</a></li>
-					<li class="list-inline-item"><a class="nav-link py-0 px-2" href="#">Помощь</a></li>
-				  </ul>
+		<div class="container-fluid py-0 fixed-top bg-dark">
+			<div class="container">
+			  <ul class="list-unstyled float-right mb-1 navbar-1">
+				<li class="list-inline-item"><a class="nav-link active py-0 px-3" href="index.html">Домашняя</a></li>
+				<li class="list-inline-item">
+				   <a type="button" data-toggle="modal" data-target="#exampleModal"
+				   class="py-0 px-2 btn">Войти</a>
+				</li>
+				<li class="list-inline-item"><a class="nav-link py-0 px-2" href="#">Аккаунт</a></li>
+				<li class="list-inline-item"><a class="nav-link py-0 px-2" href="#">Статус заказа</a></li>
+				<li class="list-inline-item"><a class="nav-link py-0 px-2" href="#">Помощь</a></li>
+			  </ul>
+			</div>
+		</div>
+		<hr class="mt-4">
+		<div class="container-fluid navbar-2">
+			<div class="row">
+			  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 p-0">
+				<a class="float-right my-4" href="index.html"><img src="img/books.gif"></a>
+			  </div> 
+			  <div class="col-xl-5 col-lg-4 col-md-5 col-sm-6 d-flex justify-content-center p-0" id="poisk"> 
+				<form class="form-inline">
+				  <input class="who form-control form-control-sm is-valid" style="width:15rem;" type="text" placeholder="Search" aria-label="Search" onkeyup="showResult(this.value)" id="my_input">
+				  <button class="btn btn-outline-success my-0 my-sm-0 bg-success text-white px-1 py-1 pr-3" type="submit">
+					<svg class="bi bi-search ml-1" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
+					<path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
+					</svg>
+				   Сброс</button>
+				</form>
+				<div id="livesearch"></div>
+			  </div>
+			  <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 p-0">
+				<div class="cart-1 m-2">
+				  <p class="mt-4 mb-0 text-muted"><img src="img/Shape9.png">
+				  В Корзине (2 товара)</p>
+				  <form class="form-inline">
+					<div class="form-group">
+					  <label for="text"><h3><b>$125.0 </b></h3></label>
+					  <button type="text" id="text" class="btn btn-dark btn-sm ml-2">Проверить</button>
+					</div>
+				  </form>
+				</div>
+			  </div>  
+			  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 px-0  d-flex align-content-end">
+			   <!--  <img src="img/Shape10.png" class="img-fluid mt-4">
+				<p class="text-muted">Список желаний</p>
+				<span class="badge badge-pill badge-success">20</span> --><h1>✪</h1>
+				<?php if (Auth\User::isAuthorized()): ?>
+				<div class="omus ">
+				<?php echo "<p class='privet'>Здравствуй, <span>".$arr['names']."</span>!</p>";?>
+				<script type="text/javascript"> function displ(ddd) { if (document.getElementById(ddd).style.display == 'none') {document.getElementById(ddd).style.display = 'block'} else {document.getElementById(ddd).style.display = 'none'} } </script>
+				<p class="mod mb-0"><a href="javascript: displ('var222')">Аккаунт</a></p>
+				<div id="var222" style="display: none;">
+				<div class="dannye">
+				<p class="bolden">Ваши данные:</p>
+				<p class="sbk">Ваше имя:<br><span class='name'><?php echo $arr['names'];?></span></p>
+				<p class="sbk">Ваш e-mail:<br><span class='name'><?php echo $arr['username'];?></span></p>
+				</div><a href="javascript: displ('var222')"></a></div>
+				<form novalidate="novalidate" class="form-signin ajax" method="post" action="ajax.php">
+				<input type="hidden" name="act" value="logout">
+				<button class="btn btn-outline-light btn-sm text-dark" type="submit" class="vyxod" value="Выйти" >Выйти</button></form></div><?php else: ?></div>
+			</div>
+		</div>
+		<div class="modal fade bd-example-modal-sm" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-sm" role="document">
+				<div class="modal-content">
+					<form class="form-signin ajax" method="post" action="ajax.php">
+						<div class="modal-body mydiv p-0">
+							<p class="zag mb-1">Авторизация</p>
+							<div class="main-error alert alert-error hide mb-0"></div>
+							<label for="login" class="sr-only">E-mail</label>
+							<input type="text" name="username" class="form-control input-block-level mb-2" placeholder="E-mail" id="login">
+							<label for="inputPassword1" class="sr-only">Пароль</label>
+							<input type="password" name="password" class="form-control input-block-level" id="inputPassword1" placeholder="Пароль">
+						</div>
+						<div class="modal-footer px-0">
+							<a href="registr.html">
+								<button type="button" class="btn btn-success btn-sm" data-dismiss="	registration">Зарегистрироваться</button>
+							</a>
+							<input type="hidden" name="act" value="login">
+							<input type="submit" class="button btn-sm btn-primary text-white m-0" value=" Войти " style="width:auto;">
+						</div>
+				  </form><?php endif; ?>
 				</div>
 			</div>
-			<hr class="mt-4">
-
-            <!--      Навигатор, Поиск Бар!
-            ------------------------------------------>
-          <div class="container-fluid navbar-2">
-            <div class="row">
-              <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 p-0">
-                <a class="float-right my-4" href="index.html"><img src="img/books.gif"></a>
-              </div> 
-              <div class="col-xl-5 col-lg-4 col-md-5 col-sm-6 d-flex justify-content-center p-0" id="poisk"> 
-                <form class="form-inline">
-                  <input class="who form-control form-control-sm is-valid" style="width:15rem;" type="text" placeholder="Search" aria-label="Search" onkeyup="showResult(this.value)" id="my_input">
-                  <button class="btn btn-outline-success my-0 my-sm-0 bg-success text-white px-1 py-1 pr-3" type="submit">
-                    <svg class="bi bi-search ml-1" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
-                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
-                    </svg>
-                   Сброс</button>
-                </form>
-                <div id="livesearch"></div>
-              </div>
-              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 p-0">
-                <div class="cart-1 m-2">
-                  <p class="mt-4 mb-0 text-muted"><img src="img/Shape9.png">
-                  В Корзине (2 товара)</p>
-                  <form class="form-inline">
-                    <div class="form-group">
-                      <label for="text"><h3><b>$125.0 </b></h3></label>
-                      <button type="text" id="text" class="btn btn-dark btn-sm ml-2">Проверить</button>
-                    </div>
-                  </form>
-                </div>
-              </div>  
-              <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 px-0  d-flex align-content-end">
-               <!--  <img src="img/Shape10.png" class="img-fluid mt-4">
-                <p class="text-muted">Список желаний</p>
-                <span class="badge badge-pill badge-success">20</span> --><h1>✪</h1>
-                <?php if (Auth\User::isAuthorized()): ?>
-                <div class="omus ">
-                <?php echo "<p class='privet'>Здравствуй, <span>".$arr['names']."</span>!</p>";?>
-                <script type="text/javascript"> function displ(ddd) { if (document.getElementById(ddd).style.display == 'none') {document.getElementById(ddd).style.display = 'block'} else {document.getElementById(ddd).style.display = 'none'} } </script>
-                <p class="mod mb-0"><a href="javascript: displ('var222')">Аккаунт</a></p>
-                <div id="var222" style="display: none;">
-                <div class="dannye">
-                <p class="bolden">Ваши данные:</p>
-                <p class="sbk">Ваше имя:<br><span class='name'><?php echo $arr['names'];?></span></p>
-                <p class="sbk">Ваш e-mail:<br><span class='name'><?php echo $arr['username'];?></span></p>
-                </div><a href="javascript: displ('var222')"></a></div>
-                <form novalidate="novalidate" class="form-signin ajax" method="post" action="ajax.php">
-                <input type="hidden" name="act" value="logout">
-                <button class="btn btn-outline-light btn-sm text-dark" type="submit" class="vyxod" value="Выйти" >Выйти</button></form></div><?php else: ?></div>
-            </div>
-        </div>
-
-          <!-- Modal -->
-        <div class="modal fade bd-example-modal-sm" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-sm" role="document">
-				<div class="modal-content">
-					<div class="modal-body mydiv p-0">
-					<form class="form-signin ajax" method="post" action="ajax.php">
-						<p class="zag mb-1">Авторизация</p>
-						<div class="main-error alert alert-error hide mb-0"></div>
-						<label for="login" class="sr-only">E-mail</label>
-						 <input type="text" name="username" class="form-control input-block-level mb-2" placeholder="E-mail" id="login">
-						 <label for="inputPassword1" class="sr-only">Пароль</label>
-						 <input type="password" name="password" class="form-control input-block-level" id="inputPassword1" placeholder="Пароль"></div>
-                    <div class="modal-footer"><a href="registr.html">
-                      <button type="button" class="btn btn-success btn-sm" data-dismiss="
-                        registration">Зарегистрироваться</button></a>
-                        <input type="hidden" name="act" value="login">
-                        <input type="submit" class="button btn-sm btn-primary text-white"  value=" Войти ">
-                      <button type="submit" class="button btn-sm btn-danger text-white p-0" value="Refresh Page" onClick="window.location.href=window.location.href"><svg class="bi bi-x" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
-                        <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
-                      </svg></button>
-                    </div>
-					</form><?php endif; ?>
+		</div>
+		<hr>
+		<div class="container justify-content-center">
+			<div class="row link-1">
+				<a href="#"><p>Компьютеры</p></a>
+				<a href="#"><p>Поваренные</p> </a>
+				<a href="#" class="active-2"><p> Образование</p> </a>
+				<a href="#"><p>Художественная литература</p></a>
+				<a href="#"><p>Здоровье</p></a>
+				<a href="#"><p>Математика</p></a>
+				<a href="#"><p>Медицина</p></a>
+				<a href="#"><p>Ссылка</p></a>
+				<a href="#"><p>Наука</p></a>
+			</div>
+		</div>
+		<hr>
+		<!--   Продукт,  Крошки!------------------------------------------>
+		<div class="container">
+			<div class="row justify-content-center mt-1">
+			  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 px-0 product">
+				<nav aria-label="breadcrumb">
+				  <ol class="breadcrumb mb-0 py-1 px-3 bg-transparent">
+					<li class="breadcrumb-item"><a href="index.html">Домашняя</a></li>
+					<li class="breadcrumb-item"><a href="category.html">Скидки и Распродажа</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Звёздные войны. Эпизод I</li>
+				  </ol>
+				</nav>
+			  </div>  
+			</div>
+			<div class="row justify-content-center mt-1">
+			  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 product">
+				<div class="row p-4">
+				  <div class="col-3 p-0">
+					<img src="img/17.png" class="img-fluid" title="Звёздные войны. Эпизод I">
+				  </div>
+				  <div class="col-9"><img src="img/1114.png" class="float-right">
+					<h1 class="ml-3">Звёздные войны. Эпизод I</h1>
+					<p class="ml-3" align="justify">Звёздные войны. Эпизод I: Новелла «Призрачная угроза» была написана Терри Бруксом и опубликована 21 апреля 1999 года Дель Рей. Он основан на одноименном сценарии фильма. Повествование для сокращенной аудиоверсии было выполнено Майклом Кампсти. Бесконечная версия была выполнена Александром Адамсом. 31 января 2012 года, новое издание в мягкой обложке.</p>
+					<div class="col-11 p-3 mt-4 product">
+					  <button type="button" class="btn btn-success btn-sm button-1">Добавить в корзину</button>
+					  <h2 class="ml-3">Наша цена : <b> $ 150 </b></h2>
+					  <h5 class="ml-3">Было $ 200 сэкономьте 25%</h5>
+					  <hr class="my-3">
+					  <p class="mb-1 ml-3">$ Безопасные покупки</p>
+					  <a href="#"><img src="img/Layer4.png" class="ml-3" title="PayPaI"></a>
+					  <a href="#"><img src="img/Layer1.png" title="MasterCard"></a>
+					  <a href="#"><img src="img/Layer3.png" title="VISA"></a>
+					  <a href="#"><img src="img/Layer2.png" title="AMERICAN ExPRESS"></a>
+					</div>
+				  </div>
 				</div>
-            </div>
-        </div>
-        <hr>
-
-            <!--      Горизонтальный Бар!
-            ------------------------------------------>
-        <div class="container justify-content-center">
-            <div class="row link-1">
-                <a href="#"><p>Компьютеры</p></a>
-                <a href="#"><p>Поваренные</p> </a>
-                <a href="#" class="active-2"><p> Образование</p> </a>
-                <a href="#"><p>Художественная литература</p></a>
-                <a href="#"><p>Здоровье</p></a>
-                <a href="#"><p>Математика</p></a>
-                <a href="#"><p>Медицина</p></a>
-                <a href="#"><p>Ссылка</p></a>
-                <a href="#"><p>Наука</p></a>
-            </div>
-        </div>
-        <hr>
-          
-            <!--   Продукт  Крошки!
-            ------------------------------------------>
-        <div class="container">
-            <div class="row justify-content-center mt-1">
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 px-0 product">
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb mb-0 py-1 px-3 bg-transparent">
-                    <li class="breadcrumb-item"><a href="index.html">Домашняя</a></li>
-                    <li class="breadcrumb-item"><a href="category.html">Скидки и Распродажа</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Звёздные войны. Эпизод I</li>
-                  </ol>
-                </nav>
-              </div>  
-            </div>
-            <div class="row justify-content-center mt-1">
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 product">
-                <div class="row p-4">
-                  <div class="col-3 p-0">
-                    <img src="img/17.png" class="img-fluid" title="Звёздные войны. Эпизод I">
-                  </div>
-                  <div class="col-9"><img src="img/1114.png" class="float-right">
-                    <h1 class="ml-3">Звёздные войны. Эпизод I</h1>
-                    <p class="ml-3" align="justify">Звёздные войны. Эпизод I: Новелла «Призрачная угроза» была написана Терри Бруксом и опубликована 21 апреля 1999 года Дель Рей. Он основан на одноименном сценарии фильма. Повествование для сокращенной аудиоверсии было выполнено Майклом Кампсти. Бесконечная версия была выполнена Александром Адамсом. 31 января 2012 года, новое издание в мягкой обложке.</p>
-                    <div class="col-11 p-3 mt-4 product">
-                      <button type="button" class="btn btn-success btn-sm button-1">Добавить в корзину</button>
-                      <h2 class="ml-3">Наша цена : <b> $ 150 </b></h2>
-                      <h5 class="ml-3">Было $ 200 сэкономьте 25%</h5>
-                      <hr class="my-3">
-                      <p class="mb-1 ml-3">$ Безопасные покупки</p>
-                      <a href="#"><img src="img/Layer4.png" class="ml-3" title="PayPaI"></a>
-                      <a href="#"><img src="img/Layer1.png" title="MasterCard"></a>
-                      <a href="#"><img src="img/Layer3.png" title="VISA"></a>
-                      <a href="#"><img src="img/Layer2.png" title="AMERICAN ExPRESS"></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>  
-
+			  </div>
+			</div>
+		</div>  
 		<div class="container mt-2">
 			<div class="row">
 				<div class="col-xl- col-lg- col-md col-sm p-0 mt-2">
@@ -222,7 +202,6 @@
 					  </form>
 					</div>
 				</div>
-
 				<div class="col-xl-3 col-lg-3 col-md col-sm float-left ml-2 mt-5 px-0 py-2 product">
 					<div class="col">
 					  <h4>Вам также может понравиться</h4>
@@ -281,9 +260,6 @@
 				</div>
 			</div>  
 		</div>
-
-        <!--      Подвал-1!
-        ------------------------------------------>
 		<div class="container-fluid footer-1 mt-3 p-4">
 			<div class="container">
 				<div class="row">
@@ -354,9 +330,6 @@
 				</div>
 			</div>
 		</div>
-
-        <!--     Подвал-2!
-        ------------------------------------------>
 		<div class="container-fluid footer-2">
 			<div class="row d-flex justify-content-center">
 				<div class="col-8 text-center">
@@ -371,19 +344,15 @@
 				</div>
 			</div>
 		</div>
-        <hr>
-        <div class="container-fluid footer-2">
+		<hr>
+		<div class="container-fluid footer-2">
 			<div class="row justify-content-center">
 				<div class="col-8 text-center">
 					<h3> Условия использования Конфиденциальность © 2012-2013, Booksonline, Inc или ее филиалы</h3>
 				</div>
 			</div>  
-        </div>
-    </div>
-
-
-    <!-- Подключение JavaScript -->
-    <!-- Сначала jQuery, затем Popper.js, затем Bootstrap JS -->
+		</div>
+	</div>
     <script src="js/jquery-3.2.1.slim.min.js"></script>
     <script src="js/popper.min.js" ></script>
     <script src="js/bootstrap.min.js"></script>
