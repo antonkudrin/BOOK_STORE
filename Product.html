@@ -1,0 +1,394 @@
+<?php if (!empty($_COOKIE['sid'])) {session_id($_COOKIE['sid']);} session_start(); require_once 'classes/Auth.class.php'; require_once 'stayt.php'; ?>
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!--Метки для поисковиков-->
+    <meta name="keywords" content="Книга, Фантастика">          <!--Метка-->
+    <meta name="discription" content="Заяц с Янтарными глазами"><!--Описание для поисковиков-->
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="style.css">
+		<link rel="shortcut icon" href="img/favicon.png" type="image/png">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Книжный магазин</title>
+	</head>
+	<body>
+    <div class="wrapper p-0">
+
+			  <!--      Навигатор Статичный!
+			  ------------------------------------------>
+			<div class="container-fluid py-0 fixed-top bg-dark">
+				<div class="container">
+				  <ul class="list-unstyled float-right mb-1 navbar-1">
+					<li class="list-inline-item"><a class="nav-link active py-0 px-3" href="http://www.books.loc">Домашняя</a></li>
+					<!-- Button trigger modal -->
+					<li class="list-inline-item">
+					   <a type="button" data-toggle="modal" data-target="#exampleModal"
+					   class="py-0 px-2 btn">Войти</a>
+					</li>
+					<li class="list-inline-item"><a class="nav-link py-0 px-2" href="#">Аккаунт</a></li>
+					<li class="list-inline-item"><a class="nav-link py-0 px-2" href="#">Статус заказа</a></li>
+					<li class="list-inline-item"><a class="nav-link py-0 px-2" href="#">Помощь</a></li>
+				  </ul>
+				</div>
+			</div>
+			<hr class="mt-4">
+
+            <!--      Навигатор, Поиск Бар!
+            ------------------------------------------>
+          <div class="container-fluid navbar-2">
+            <div class="row">
+              <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 p-0">
+                <a class="float-right my-4" href="http://www.books.loc"><img src="img/books.gif"></a>
+              </div> 
+              <div class="col-xl-5 col-lg-4 col-md-5 col-sm-6 d-flex justify-content-center p-0" id="poisk"> 
+                <form class="form-inline">
+                  <input class="who form-control form-control-sm is-valid" style="width:15rem;" type="text" placeholder="Search" aria-label="Search" onkeyup="showResult(this.value)" id="my_input">
+                  <button class="btn btn-outline-success my-0 my-sm-0 bg-success text-white px-1 py-1 pr-3" type="submit">
+                    <svg class="bi bi-search ml-1" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
+                    </svg>
+                   Сброс</button>
+                </form>
+                <div id="livesearch"></div>
+              </div>
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 p-0">
+                <div class="cart-1 m-2">
+                  <p class="mt-4 mb-0 text-muted"><img src="img/Shape9.png">
+                  В Корзине (2 товара)</p>
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label for="text"><h3><b>$125.0 </b></h3></label>
+                      <button type="text" id="text" class="btn btn-dark btn-sm ml-2">Проверить</button>
+                    </div>
+                  </form>
+                </div>
+              </div>  
+              <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 px-0  d-flex align-content-end">
+               <!--  <img src="img/Shape10.png" class="img-fluid mt-4">
+                <p class="text-muted">Список желаний</p>
+                <span class="badge badge-pill badge-success">20</span> --><h1>✪</h1>
+                <?php if (Auth\User::isAuthorized()): ?>
+                <div class="omus ">
+                <?php echo "<p class='privet'>Здравствуй, <span>".$arr['names']."</span>!</p>";?>
+                <script type="text/javascript"> function displ(ddd) { if (document.getElementById(ddd).style.display == 'none') {document.getElementById(ddd).style.display = 'block'} else {document.getElementById(ddd).style.display = 'none'} } </script>
+                <p class="mod mb-0"><a href="javascript: displ('var222')">Аккаунт</a></p>
+                <div id="var222" style="display: none;">
+                <div class="dannye">
+                <p class="bolden">Ваши данные:</p>
+                <p class="sbk">Ваше имя:<br><span class='name'><?php echo $arr['names'];?></span></p>
+                <p class="sbk">Ваш e-mail:<br><span class='name'><?php echo $arr['username'];?></span></p>
+                </div><a href="javascript: displ('var222')"></a></div>
+                <form novalidate="novalidate" class="form-signin ajax" method="post" action="ajax.php">
+                <input type="hidden" name="act" value="logout">
+                <button class="btn btn-outline-light btn-sm text-dark" type="submit" class="vyxod" value="Выйти" >Выйти</button></form></div><?php else: ?></div>
+            </div>
+        </div>
+
+          <!-- Modal -->
+        <div class="modal fade bd-example-modal-sm" data-backdrop="static" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+				<div class="modal-content">
+					<div class="modal-body mydiv p-0">
+					<form class="form-signin ajax" method="post" action="ajax.php">
+						<p class="zag mb-1">Авторизация</p>
+						<div class="main-error alert alert-error hide mb-0"></div>
+						<label for="login" class="sr-only">E-mail</label>
+						 <input type="text" name="username" class="form-control input-block-level mb-2" placeholder="E-mail" id="login">
+						 <label for="inputPassword1" class="sr-only">Пароль</label>
+						 <input type="password" name="password" class="form-control input-block-level" id="inputPassword1" placeholder="Пароль"></div>
+                    <div class="modal-footer"><a href="registr.html">
+                      <button type="button" class="btn btn-success btn-sm" data-dismiss="
+                        registration">Зарегистрироваться</button></a>
+                        <input type="hidden" name="act" value="login">
+                        <input type="submit" class="button btn-sm btn-primary text-white"  value=" Войти ">
+                      <button type="submit" class="button btn-sm btn-danger text-white p-0" value="Refresh Page" onClick="window.location.href=window.location.href"><svg class="bi bi-x" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+                      </svg></button>
+                    </div>
+					</form><?php endif; ?>
+				</div>
+            </div>
+        </div>
+        <hr>
+
+            <!--      Горизонтальный Бар!
+            ------------------------------------------>
+        <div class="container justify-content-center">
+            <div class="row link-1">
+                <a href="#"><p>Компьютеры</p></a>
+                <a href="#"><p>Поваренные</p> </a>
+                <a href="#" class="active-2"><p> Образование</p> </a>
+                <a href="#"><p>Художественная литература</p></a>
+                <a href="#"><p>Здоровье</p></a>
+                <a href="#"><p>Математика</p></a>
+                <a href="#"><p>Медицина</p></a>
+                <a href="#"><p>Ссылка</p></a>
+                <a href="#"><p>Наука</p></a>
+            </div>
+        </div>
+        <hr>
+          
+            <!--   Продукт  Крошки!
+            ------------------------------------------>
+        <div class="container">
+            <div class="row justify-content-center mt-1">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 px-0 product">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb mb-0 py-1 px-3 bg-transparent">
+                    <li class="breadcrumb-item"><a href="http://www.books.loc">Домашняя</a></li>
+                    <li class="breadcrumb-item"><a href="http://www.books.loc/category.html">Скидки и Распродажа</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Звёздные войны. Эпизод I</li>
+                  </ol>
+                </nav>
+              </div>  
+            </div>
+            <div class="row justify-content-center mt-1">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 product">
+                <div class="row p-4">
+                  <div class="col-3 p-0">
+                    <img src="img/17.png" class="img-fluid" title="Звёздные войны. Эпизод I">
+                  </div>
+                  <div class="col-9"><img src="img/1114.png" class="float-right">
+                    <h1 class="ml-3">Звёздные войны. Эпизод I</h1>
+                    <p class="ml-3" align="justify">Звёздные войны. Эпизод I: Новелла «Призрачная угроза» была написана Терри Бруксом и опубликована 21 апреля 1999 года Дель Рей. Он основан на одноименном сценарии фильма. Повествование для сокращенной аудиоверсии было выполнено Майклом Кампсти. Бесконечная версия была выполнена Александром Адамсом. 31 января 2012 года, новое издание в мягкой обложке.</p>
+                    <div class="col-11 p-3 mt-4 product">
+                      <button type="button" class="btn btn-success btn-sm button-1">Добавить в корзину</button>
+                      <h2 class="ml-3">Наша цена : <b> $ 150 </b></h2>
+                      <h5 class="ml-3">Было $ 200 сэкономьте 25%</h5>
+                      <hr class="my-3">
+                      <p class="mb-1 ml-3">$ Безопасные покупки</p>
+                      <a href="#"><img src="img/Layer4.png" class="ml-3" title="PayPaI"></a>
+                      <a href="#"><img src="img/Layer1.png" title="MasterCard"></a>
+                      <a href="#"><img src="img/Layer3.png" title="VISA"></a>
+                      <a href="#"><img src="img/Layer2.png" title="AMERICAN ExPRESS"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>  
+
+		<div class="container mt-2">
+			<div class="row">
+				<div class="col-xl- col-lg- col-md col-sm p-0 mt-2">
+					<div class="col-xl-12 col-lg-12 col-md col-sm p-0">
+					  <nav>
+						<div class="nav nav-tabs" id="nav-tab" role="tablist">
+						  <a class="nav-item nav-link mr-2 active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Информация о товаре</a>
+						  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Другие детали</a>
+						</div>
+					  </nav>
+					  <div class="tab-content p-3 product" id="nav-tabContent">
+						<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" align="justify">Звёздные войны. Эпизод I: Новелла «Призрачная угроза» была написана Терри Бруксом и опубликована 21 апреля 1999 года Дель Рей. Он основан на одноименном сценарии фильма. Повествование для сокращенной аудиоверсии было выполнено Майклом Кампсти. Бесконечная версия была выполнена Александром Адамсом. 31 января 2012 года было выпущено новое издание в мягкой обложке.</div>
+						<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Звёздные войны. Эпизод I: Новелла «Призрачная угроза» была написана Терри Бруксом и опубликована 21 апреля 1999 года Дель Рей. Он основан на одноименном сценарии фильма. Повествование для сокращенной аудиоверсии было выполнено Майклом Кампсти. Бесконечная версия была выполнена Александром Адамсом. 31 января 2012 года было выпущено новое издание в мягкой обложке.</div>
+					  </div>
+					</div>
+					<div class="col-xl-12 col-lg-12 col-md col-sm mt-3 p-4 product">
+					  <h3>Обзор продукта</h3>
+					  <div class="cart" style="width: 3.6rem;"><img src="img/18.png" class="float-left m-3 card-img"></div>
+					  <p class="my-3">Lorem Ipsum - просто фиктивный текст в полиграфии и вёрстке. Лорем Ипсум был стандартным манекенщиком в отрасли с 1500-х годов, когда неизвестный принтер взял набор шрифтов и скремблировал его, чтобы сделать книгу типовых образцов. Он пережил не только пять веков, но и скачок в электронном наборе текста, оставаясь по существу</p>
+					  <hr>
+					  <div class="cart" style="width: 3.6rem;"><img src="img/17.png" class="float-left m-3 card-img"></div>
+					  <p class="my-3">Lorem Ipsum - просто фиктивный текст в полиграфии и вёрстке. Лорем Ипсум был стандартным манекенщиком в отрасли с 1500-х годов, когда неизвестный принтер взял набор шрифтов и скремблировал его, чтобы сделать книгу типовых образцов. Он пережил не только пять веков, но и скачок в электронном наборе текста, оставаясь по существу</p>
+					  <h3 class="my-4">Написать комментарий</h3>
+					  <form action="formdata.php" method="POST" name="form1">
+						  <div class="form-group row">
+							<label for="inputText3" class="col-sm-2 col-form-label">Ваше Имя :</label>
+							<div class="col-sm-10">
+							  <input type="text" name="inputText3" class="form-control" id="inputText3" value="<?php echo $arr['names'];?>">
+							</div>
+						  </div>
+						  <div class="form-group row">
+							<label for="inputEmail3" class="col-sm-2 col-form-label">Ваш Email :</label>
+							<div class="col-sm-10">
+							  <input type="email" name="inputEmail3" class="form-control" id="inputEmail3" value="<?php echo $arr['username'];?>">
+							</div>
+						  </div>
+						  <div class="form-group row">
+							<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Сообщение :</label>
+							<div class="col-sm-10">
+							  <textarea class="form-control" name="exampleFormControlTextarea1" id="exampleFormControlTextarea1" rows="3"></textarea>
+							</div>  
+						  </div>
+						  <div class="d-flex justify-content-end">
+							<button type="Submit" class="btn btn-success btn-sm">Отправить</button>
+						  </div>
+					  </form>
+					</div>
+				</div>
+
+				<div class="col-xl-3 col-lg-3 col-md col-sm float-left ml-2 mt-5 px-0 py-2 product">
+					<div class="col">
+					  <h4>Вам также может понравиться</h4>
+					  <a href="img/4.png">
+					  <div class="shadow p-1 bg-white rounded w-25 mr-3 float-left">
+						<img src="img/4.png" class="img-fluid"></div>
+					  <p>Бессмертные Глаза</p>            
+					  <h3><b>$80</b></h3>
+					  <button type="button" class="btn btn-dark btn-sm">Читайте больше</button></a>
+					</div>
+					<hr class="mb-3 mt-2">
+					<div class="col">
+					  <a href="img/4.png">
+					  <div class="shadow p-1 bg-white rounded w-25 mr-3 float-left">
+						<img src="img/4.png" class="img-fluid"></div>
+					  <p>Бессмертные Глаза</p>            
+					  <h3><b>$80</b></h3>
+					  <button type="button" class="btn btn-dark btn-sm">Читайте больше</button></a>
+					</div>
+					<hr class="mb-3 mt-2">
+					<div class="col">
+					  <a href="img/4.png">
+					  <div class="shadow p-1 bg-white rounded w-25 mr-3 float-left">
+						<img src="img/4.png" class="img-fluid"></div>
+					  <p>Бессмертные Глаза</p>            
+					  <h3><b>$80</b></h3>
+					  <button type="button" class="btn btn-dark btn-sm">Читайте больше</button></a>
+					</div>
+					<hr class="mb-3 mt-2">
+					<div class="col">
+					  <a href="img/4.png">
+					  <div class="shadow p-1 bg-white rounded w-25 mr-3 float-left">
+						<img src="img/4.png" class="img-fluid"></div>
+					  <p>Бессмертные Глаза</p>            
+					  <h3><b>$80</b></h3>
+					  <button type="button" class="btn btn-dark btn-sm">Читайте больше</button></a>
+					</div>
+					<hr class="mb-3 mt-2">
+					<div class="col">
+					  <a href="img/4.png">
+					  <div class="shadow p-1 bg-white rounded w-25 mr-3 float-left">
+						<img src="img/4.png" class="img-fluid"></div>
+					  <p>Бессмертные Глаза</p>            
+					  <h3><b>$80</b></h3>
+					  <button type="button" class="btn btn-dark btn-sm">Читайте больше</button></a>
+					</div>
+					<hr class="mb-3 mt-2">
+					<div class="col">
+					  <a href="img/4.png">
+					  <div class="shadow p-1 bg-white rounded w-25 mr-3 float-left">
+						<img src="img/4.png" class="img-fluid"></div>
+					  <p>Бессмертные Глаза</p>            
+					  <h3><b>$80</b></h3>
+					  <button type="button" class="btn btn-dark btn-sm">Читайте больше</button></a>
+					</div>
+				</div>
+			</div>  
+		</div>
+
+        <!--      Подвал-1!
+        ------------------------------------------>
+		<div class="container-fluid footer-1 mt-3 p-4">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+					  <ul class="list-group list-group-flush mx-3">
+						<li class="list-group px-0"><h3>Биография и правдивые истории</h3></li>
+						<a href="#" class="list-group py-1">Общие </a> 
+						<a href="#" class="list-group py-1">Дневники, Письма и Журналы</a> 
+						<a href="#" class="list-group py-1">Мемуары </a> 
+						<a href="#" class="list-group py-1">Правдивые истории</a> 
+						<a href="#" class="list-group py-1">Общие экзамены</a> 
+						<a href="#" class="list-group py-1">GK Титулы</a> 
+						<a href="#" class="list-group py-1">Медицинский вход</a> 
+						<a href="#" class="list-group py-1">Другие вступительные экзамены</a>
+						<a href="#" class="list-group py-1">ЕГ вступительные экзамены</a> 
+						<a href="#" class="list-group py-1">Титулы самопомощи</a> 
+						<a href="#" class="list-group py-1">Социология</a> 
+					  </ul>  
+					</div>
+					<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+					  <ul class="list-group list-group-flush mx-3">
+						<li class="list-group px-0"><h3>Профессиональная и Справочники</h3></li>
+						<a href="#" class="list-group py-1">Академические и Справочники</a> 
+						<a href="#" class="list-group py-1">Бизнес Трейд</a> 
+						<a href="#" class="list-group py-1">Инженерные и Компьютерные Науки</a> 
+						<a href="#" class="list-group py-1">Гуманитарные, Общественные Науки и Языки</a> 
+						<a href="#" class="list-group py-1">Введение в Компьютеры</a> 
+						<a href="#" class="list-group py-1">Наука и Математика</a> 
+						<a href="#" class="list-group py-1">Торговый Бизнес</a> 
+						<a href="#" class="list-group py-1">Английский Язык и Литература</a> 
+						<a href="#" class="list-group py-1">Преподавание Английского Языка</a> 
+						<a href="#" class="list-group py-1">Осведомленность об Окружающей Среде</a> 
+						<a href="#" class="list-group py-1">Защита окружающей среды</a> 
+					  </ul>         
+					</div>
+					<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+					  <ul class="list-group list-group-flush mx-3">
+						<li class="list-group px-0"><h3>Науки о Земле</h3></li>
+						<a href="#" class="list-group py-1">Науки о Земле</a> 
+						<a href="#" class="list-group py-1">География</a> 
+						<a href="#" class="list-group py-1">Региональное и территориальное планирование</a> 
+						<a href="#" class="list-group py-1">Фантастика</a> 
+						<a href="#" class="list-group py-1">Геология</a> 
+						<a href="#" class="list-group py-1">Юмористический</a> 
+						<a href="#" class="list-group py-1">Интерактивный</a> 
+						<a href="#" class="list-group py-1">Легальный</a> 
+						<a href="#" class="list-group py-1">Мужское приключение</a> 
+						<a href="#" class="list-group py-1">Фильм или телевизионная привязка</a> 
+						<a href="#" class="list-group py-1">Осведомленность об Окружающей Среде</a> 
+					  </ul>         
+					</div>
+					<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+					  <ul class="list-group list-group-flush mx-3">
+						<li class="list-group px-0"><h3>Математика</h3></li>
+						<a href="#" class="list-group py-1">Алгебра</a> 
+						<a href="#" class="list-group py-1">Дифференциальные Уравнения</a> 
+						<a href="#" class="list-group py-1">Дискретная Математика</a> 
+						<a href="#" class="list-group py-1">Анализ Фурье</a> 
+						<a href="#" class="list-group py-1">Численный Анализ</a> 
+						<a href="#" class="list-group py-1">Вероятность</a> 
+						<a href="#" class="list-group py-1">Статистические Методы / Анализ данных</a> 
+						<a href="#" class="list-group py-1">Стохастические и Случайные Процессы</a> 
+						<a href="#" class="list-group py-1">Топология</a> 
+						<a href="#" class="list-group py-1">Статистика</a> 
+						<a href="#" class="list-group py-1">Математика</a> 
+					  </ul>         
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <!--     Подвал-2!
+        ------------------------------------------>
+		<div class="container-fluid footer-2">
+			<div class="row d-flex justify-content-center">
+				<div class="col-8 justify-content-center">
+					<h1>Мы принимаем все основные кредитные карты / дебетовые карты / интернет-банкинг</h1>
+					<div class="row d-flex justify-content-center">
+					  <div class="col-4 mb-3 d-flex justify-content-center">
+						<a href="#"><img src="img/Layer1.png" class="img-fluid"></a>
+						<a href="#"><img src="img/Layer2.png" class="img-fluid"></a>
+						<a href="#"><img src="img/Layer3.png" class="img-fluid"></a>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <hr>
+        <div class="container-fluid footer-2">
+			<div class="row justify-content-center">
+				<div class="col-8">
+					<h3> Условия использования Конфиденциальность © 2012-2013, Booksonline, Inc или ее филиалы</h3>
+				</div>
+			</div>  
+        </div>
+    </div>
+
+
+    <!-- Подключение JavaScript -->
+    <!-- Сначала jQuery, затем Popper.js, затем Bootstrap JS -->
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js" ></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-2.0.3.min.js" type="text/javascript"></script>
+    <script src="js/ajax-form.js" type="text/javascript"></script>
+    <script src="js/search.js" type="text/javascript"></script>
+  </body>
+</html>
