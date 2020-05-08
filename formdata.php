@@ -1,5 +1,5 @@
 <?php
-$result = mail ("test@test.ru","Получен Комментарий с сайта","
+$result = mail ("atlet-2@mail.ru","Получен Комментарий с сайта","
     \nC сайта Книжный магазин был получен Комментарий:
 	\nИмя: $_POST[inputText3]
 	\nПочта: $_POST[inputEmail3]
