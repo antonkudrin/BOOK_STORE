@@ -1,40 +1,36 @@
-.row > *b {
-   border: 1px solid red;
-}
+
 hr {
    margin: 0px;
    border-bottom: 1px solid #dedede;
 }
+
 .wrapper {
    max-width: 2500px;
    margin: 0 auto;
 }
+
 .breadcrumb-item + .breadcrumb-item::before {
-   font-family: "fontAwesome";
-   content: "»" !important;
+   content: "\00BB" !important;
 }
-/*****************************| 
-|     Навигатор Статичный!	  |
-|	Цвет Ссылки при нажатии	  |
+
+/** Навигатор фиксированный!	
 ----------------------------**/
-.navbar-1 a {
+.navbar-fixed a {
    color: #ffffff;
    text-decoration: none;
    font: 18px Times New Roman;
    transition: color 0.5s;
 }
-.navbar-1 a:hover {
+.navbar-fixed a:hover {
    color: #dedede;
    text-decoration: none;
 }
-/*****************************| 
-|     Навигатор, Поиск Бар!	  |
-|							  |
+/**** Навигатор, Поиск Бар!
 ----------------------------**/
-.navbar-2 {
+.navbar-header {
    background: linear-gradient(to bottom, #ffffff 20%, #ebebeb 80%);
 }
-.navbar-2 input {
+.navbar-header input {
    outline: 3px solid #28a745;
 }
 .cart-1 {
@@ -103,7 +99,7 @@ hr {
    color: #900000;
    transition: all 0.7s ease 0s;
 }
-/**	Регистрация	  |
+/**	Регистрация
 ----------------------------**/
 .mydiv {
    display: block;
@@ -214,9 +210,7 @@ hr {
    font-style: italic;
    color: #900000;
 }
-/******************************|
-|	  Горизонтальный Бар!	   |
-|	Цвет Ссылки при нажатии    |
+/** Горизонтальный Бар!
 ----------------------------**/
 .link-1 a {
    color: #6e6e6e;
@@ -247,9 +241,7 @@ hr {
    color: #ffffff;
    background-color: #28a745;
 }
-/******************************|
-|	    Продукт!			   |
-|	    					   |
+/** Продукт!
 ----------------------------**/
 .categories {
    border-left: 1px solid #d8dce0;
@@ -295,9 +287,8 @@ hr {
 .product p {
    margin-bottom: 0;
 }
-/*****************************|
-|		  Левый Бар!		  |
-|	Цвет Ссылки при нажатии	  |
+
+/**Левый Бар
 ----------------------------**/
 
 .category a {
@@ -332,9 +323,7 @@ ul .category-active:hover{
    padding-left: 10px;
    margin-bottom: 0;
 }
-/*****************************| 
-|		Контент!			  |
-|	Цвет Ссылки при нажатии	  |
+/** Контент!			  
 ----------------------------**/
 a:hover {
    text-decoration: none;
@@ -373,9 +362,10 @@ a:hover {
    margin-top: 2.4em;
 }
 .pagination li {
-   padding: 5px 12px;
+   padding: 5px 0;
 }
 .pagination a {
+   padding: 7px 12px;
    color: #646464;
 }
 li.dsb-active-1 {
@@ -417,7 +407,7 @@ li.dsb-active-1 {
    background-color: #404040;
 }
 
-/*		Подвал-2!
+/**		Подвал-2!
 **************************/
 .footer-2 {
    background-color: #313333;
